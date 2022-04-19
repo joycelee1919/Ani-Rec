@@ -169,5 +169,5 @@ def random_thoughts():
 
     display(sorted_df)
 
- random_thoughts()
+ random_thoughts
         
