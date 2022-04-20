@@ -140,14 +140,14 @@ brainstorm_df_output = pd.concat([brainstorm_df.iloc[[top1]], brainstorm_df.iloc
 display_df = brainstorm_df_output.drop('Keywords', axis = 1)
 
 elements = [word for word, word_count in Counter(" ".join(brainstorm_df_output["Keywords"]).split()).most_common(30) if word not in stpwrd ]
-print("\nYou entered: " + brainstorm)
-print("\nWe think you'd like anime with these elements: " + str(elements))
+st.write("\nYou entered: " + brainstorm)
+st.write("\nWe think you'd like anime with these elements: " + str(elements))
 
 sorted_df = display_df.sort_values('Similarity_score', ascending = False)
 
 display_image(sorted_df)
 
-print("Our top 5 recommendations for you:\n")
+st.write("Our top 5 recommendations for you:\n")
 
 display(sorted_df)
 
