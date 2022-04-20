@@ -124,7 +124,7 @@ st.image("https://animesher.com/orig/1/133/1331/13313/animesher.com_gif-funny-hi
 # Option RADIO BUTTONS x3 cuz buttons don't work -_-
 
 status = st.radio("How would you like to get recommended today?", 
-                  ("✨Let Your Mind Roam Free✨","Based on an anime you love 🥰", "What do other people think? 💭"))  
+                  ("Based on an anime you love 🥰", "✨Let Your Mind Roam Free✨", "What do other people think? 💭"))  
 
 #------------------------------
 
