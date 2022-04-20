@@ -270,13 +270,11 @@ elif content_rec: # content-based
                 searching = False # End of search
 
     elif collaborative_rec: # collaborative user rating clustering
-        
-        st.balloons()
-        
+              
         st.header('Collaborative user rating clustering')
 
         st.write("TOO BAD. There's nothing in here D:")
 
-        st.write("Streamlit can't handle my lovely huge dataset!!! See you in my m0nStER PC")
+        st.write("Streamlit can't handle my lovely huge dataset!!! See you in my m0nStER PC 🔥🔥🔥🔥🔥")
 
 #------------------------------
