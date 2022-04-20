@@ -7,6 +7,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from rake_nltk import Rake
 import string
 import nltk
+nltk.download('stopwords')
 from collections import Counter
 
 from PIL import Image
