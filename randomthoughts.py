@@ -112,6 +112,7 @@ keywords_matrix = cv.fit_transform(anime_kw_syn100.Keywords)
 brainstorm_matrix = cv.transform(np.array([brainstorm])) 
 
 cosine_sim = cosine_similarity(keywords_matrix, brainstorm_matrix
+
 cosine_sim_flattened = np.ravel(cosine_sim)
 
 top5_index = np.argpartition(-cosine_sim_flattened, 5)
