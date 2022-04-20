@@ -4,8 +4,8 @@ matplotlib
 seaborn
 sklearn
 rake_nltk
-string
 nltk
+collections
 PIL
 requests
 difflib
