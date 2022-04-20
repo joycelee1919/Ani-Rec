@@ -99,8 +99,7 @@ def display_image(sorted_df):
 #------------------------------
 
 pathtoCsv = r'https://docs.google.com/spreadsheets/d/1e2bBx9ImdlIav45zxGWxu-jTMH3SWUmpBYGOXYSY3bE/edit?usp=sharing&single=true&output=csv'
-anime_kw = pd.read_csv(pathtoCsv)
-#anime_kw = pd.read_csv("https://docs.google.com/spreadsheets/d/1e2bBx9ImdlIav45zxGWxu-jTMH3SWUmpBYGOXYSY3bE/edit?usp=sharing" + "/export?gid=0&format=csv", sep = "delimeter", header = 0, engine="python", encoding = "UTF-8", quoting=3)
+anime_kw = pd.read_csv(pathtoCsv, sep = "delimeter", header = 0, engine="python", encoding = "UTF-8", quoting=3)
 
 anime_kw_syn100 = anime_kw[(anime_kw.Synopsis.str.len() > 100)] 
 cv = CountVectorizer()
