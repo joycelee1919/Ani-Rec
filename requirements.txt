@@ -8,4 +8,3 @@ nltk
 pillow
 requests
 cdifflib
-streamlit
