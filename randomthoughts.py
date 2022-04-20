@@ -99,10 +99,6 @@ brainstorm = st.text_input("What's in your mind?")
 #------------------------------
 
 surprise_me = st.button("Enter")
-try_again = st.button("Reset")
-
-if try_again:
-    pyautogui.hotkey("ctrl","F5")
 
 if surprise_me: 
     keywords_matrix = cv.fit_transform(anime_kw_syn100.Keywords) 
