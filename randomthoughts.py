@@ -93,7 +93,7 @@ cv = CountVectorizer()
 
 #------------------------------
 
-brainstorm = st.text_input("What are you thinking right now?")
+brainstorm = st.text_input("What's in your mind?")
 
 keywords_matrix = cv.fit_transform(anime_kw_syn100.Keywords) 
 brainstorm_matrix = cv.transform(np.array([brainstorm])) 
@@ -134,6 +134,6 @@ display_image(sorted_df)
 
 st.write("Our top 5 recommendations for you:\n")
 
-st.write(sorted_df)
+st.plotly_chart(sorted_df)
 
 #------------------------------
