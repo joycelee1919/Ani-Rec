@@ -23,7 +23,10 @@ import streamlit as st
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_colwidth', None)
+
+gb = gridOptionsBuilder.from_dataframe()
 gb.configure_grid_options(rowHeight=50)
+gridOptions = gb.build()
 
 #------------------------------
 
