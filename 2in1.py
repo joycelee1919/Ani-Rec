@@ -130,9 +130,9 @@ status = st.radio("How would you like to get recommended today?",
 
 if status == "✨Let Your Mind Roam Free✨": # brainstorm plot elements
     
-    st.header('Random thoughts')
-    st.write('Write ANYTHING you like, any plot element, any words, any phrases!)
-    st.caption('e.g., time travel love death memory sea flower'')
+    st.header("Random thoughts")
+    st.write("Write down ANYTHING you like, any plot element, any words, any phrases!")
+    st.caption("e.g., time travel love death memory sea flower")
 
     #------------------------------
 
