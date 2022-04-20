@@ -120,18 +120,14 @@ st.caption("WARNING: streamlit runs like a snail - please be patient💖")
 
 st.title('‧͙⁺˚*･༓☾ AniRec engine made with L0VE ✿✼:*ﾟ:༅｡')
 
-st.write("How would you like to get recommended today?")
+# Option RADIO BUTTONS x3 cuz buttons don't work -_-
 
-# Option CHECKBOX x3 cuz buttons don't work -_-
-
-random_thoughts = st.checkbox("✨Let Your Mind Roam Free✨")
-content_rec = st.checkbox("Based on an anime you love 🥰")
-collaborative_rec = st.checkbox("What do other people think? 💭")
-
+status = st.radio("How would you like to get recommended today?", 
+                  ("✨Let Your Mind Roam Free✨","Based on an anime you love 🥰", "What do other people think? 💭"))  
 
 #------------------------------
 
-if random_thoughts: # brainstorm plot elements
+if status == "✨Let Your Mind Roam Free✨": # brainstorm plot elements
     
     st.header('Random thoughts')
 
@@ -189,12 +185,10 @@ if random_thoughts: # brainstorm plot elements
         st.write("Our top 5 recommendations for you:\n")
 
         st.table(sorted_df)
-        
-        random_thoughts = False
-    
+
 #------------------------------
 
-elif content_rec: # content-based
+elif status == "Based on an anime you love 🥰": # content-based
         
     st.header('Content-based recommendation')
 
@@ -267,12 +261,10 @@ elif content_rec: # content-based
 
             st.write("\nSo here are our top 10 recommendations for you:")
             st.table(display_df)
-            
-            content_rec = False
 
 #------------------------------
 
-elif collaborative_rec: # collaborative user rating clustering
+elif status == "What do other people think? 💭": # collaborative user rating clustering
 
     st.header('Collaborative user rating clustering')
     st.write("TOO BAD. There's nothing in here D:")
