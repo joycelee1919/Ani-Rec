@@ -68,33 +68,19 @@ def display_image(sorted_df):
     first_genre = sorted_df['Genres'].iloc[0].split(',')
 
     if any(word in first_genre for word in ['Action', 'Shounen', 'Mecha']):
-        plt.axis('off')
-        plt.imshow(shounen) 
-        plt.show()
+        st.image(shounen) 
     elif any(word in first_genre for word in ['Slice of Life', 'Comedy', 'School', 'Seinen']):
-        plt.axis('off')
-        plt.imshow(family) 
-        plt.show()
+        st.image(family) 
     elif any(word in first_genre for word in ['Adventure', 'Kids']):
-        plt.axis('off')
-        plt.imshow(ghibli) 
-        plt.show()
+        st.image(ghibli) 
     elif any(word in first_genre for word in ['Romance', 'Drama', 'Shoujo']):
-        plt.axis('off')
-        plt.imshow(school) 
-        plt.show()
+        st.image(school) 
     elif any(word in first_genre for word in ['Sci-Fi', 'Thriller', 'Mystery', 'Space', 'Police']):
-        plt.axis('off')
-        plt.imshow(scifi) 
-        plt.show()
+        st.image(scifi) 
     elif any(word in first_genre for word in ['Magic', 'Fantasy', 'Supernatural', 'Super Power']):
-        plt.axis('off')
-        plt.imshow(fantasy) 
-        plt.show()
+        st.image(fantasy) 
     else:
-        plt.axis('off')
-        plt.imshow(allanime) 
-        plt.show()
+        st.image(allanime) 
 
 #------------------------------
 
@@ -148,6 +134,6 @@ display_image(sorted_df)
 
 st.write("Our top 5 recommendations for you:\n")
 
-display(sorted_df)
+st.dataframe(sorted_df)
 
 #------------------------------
