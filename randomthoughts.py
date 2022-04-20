@@ -143,6 +143,6 @@ if surprise_me:
     gb = GridOptionsBuilder.from_dataframe(sorted_df)
     gb.configure_default_column(editable=False, resizable=True,sorteable=True)
     
-    AgGrid(sorted_df, gridOptions = GridOptions)
+    AgGrid(sorted_df, gridOptions = gb)
     
 #------------------------------
