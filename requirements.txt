@@ -5,7 +5,7 @@ seaborn
 sklearn
 rake_nltk
 nltk
-PIL
+pillow
 requests
 difflib
 streamlit
