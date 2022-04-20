@@ -8,3 +8,4 @@ nltk
 pillow
 requests
 cdifflib
+click==8.0
