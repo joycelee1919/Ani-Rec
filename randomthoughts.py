@@ -18,7 +18,6 @@ from difflib import get_close_matches
 
 from sklearn.metrics.pairwise import cosine_similarity
 
-from st_aggrid import AgGrid, DataReturnMode, GridUpdateMode, GridOptionsBuilder
 import streamlit as st
 
 pd.set_option('display.max_columns', None)
@@ -139,12 +138,7 @@ if surprise_me:
     display_image(sorted_df)
 
     st.write("Our top 5 recommendations for you:\n")
-    
-    gb = GridOptionsBuilder.from_dataframe(sorted_df)
-    gb.configure_grid_options(autoHeight = True, fit_columns_on_grid_load=True)
-    
-    GridOptions = gb.build()
 
-    AgGrid(sorted_df, gridOptions = GridOptions)
+    st.write(sorted_df)
     
 #------------------------------
