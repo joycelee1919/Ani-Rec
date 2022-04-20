@@ -120,6 +120,8 @@ st.caption("WARNING: streamlit runs like a snail - please be patient💖")
 
 st.title('‧͙⁺˚*･༓☾ AniRec engine made with L0VE ✿✼:*ﾟ:༅｡')
 
+st.write("How would you like to get recommended today?")
+
 # Option buttons x3
 
 random_thoughts = st.button("Let Your Mind Roam Free")
