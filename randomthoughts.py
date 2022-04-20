@@ -18,15 +18,16 @@ from difflib import get_close_matches
 
 from sklearn.metrics.pairwise import cosine_similarity
 
-pd.set_option('display.max_columns', None)
-pd.set_option('display.max_colwidth', None)
-
 from st_aggrid import AgGrid
 import streamlit as st
 
+pd.set_option('display.max_columns', None)
+pd.set_option('display.max_colwidth', None)
+gb.configure_grid_options(rowHeight=50)
+
 #------------------------------
 
-st.title('‧͙⁺˚*･༓☾AniRec Randomthoughts✿✼:*ﾟ:༅｡')
+st.title('‧͙⁺˚*･༓☾ AniRec Randomthoughts ✿✼:*ﾟ:༅｡')
 
 #------------------------------
 
