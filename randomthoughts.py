@@ -19,6 +19,7 @@ from difflib import get_close_matches
 from sklearn.metrics.pairwise import cosine_similarity
 
 import streamlit as st
+st.set_page_config(layout="wide")
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_colwidth', None)
