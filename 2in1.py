@@ -195,7 +195,7 @@ elif status == "Based on an anime you love 🥰": # content-based
         
     st.header('Content-based recommendation')
     st.write("Don't worry if you don't know the exact title, suggestions will be given :3")
-    st.caption("Try entering random stuff like: hOwl'Ss m0vingggu c4stleeeeee, 5114, 11977, LapUTa, もののけ姫 and see what happens?")
+    st.caption("Try entering random stuff like: hOwl'Ss m0vingggu c4stleeeeee, 5114, attack on titan season 3, LapUTa, もののけ姫 and see what happens?")
 
     #------------------------------
 
