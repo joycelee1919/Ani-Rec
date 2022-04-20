@@ -21,7 +21,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_colwidth', None)
 
-import plotly.tools
+import plotly.graph_objects as go
 import streamlit as st
 
 #------------------------------
