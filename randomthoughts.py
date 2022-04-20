@@ -12,6 +12,7 @@ from collections import Counter
 
 from PIL import Image
 import requests
+from IPython.display import display
 
 from difflib import get_close_matches
 
