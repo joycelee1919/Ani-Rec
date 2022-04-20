@@ -98,7 +98,8 @@ def display_image(sorted_df):
 
 #------------------------------
 
-anime_kw = pd.read_csv("https://drive.google.com/drive/u/1/folders/1HHxc65B-YhpGEC3bBV3ee959X2xyyiWW/export?format=csv")
+anime_kw = pd.read_csv("https://drive.google.com/drive/u/1/folders/1HHxc65B-YhpGEC3bBV3ee959X2xyyiWW" +
+                   "/export?gid=0&format=csv")
 
 anime_kw_syn100 = anime_kw[(anime_kw.Synopsis.str.len() > 100)] 
 cv = CountVectorizer()
