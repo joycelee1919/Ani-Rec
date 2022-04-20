@@ -97,7 +97,6 @@ def search_casein(string_entry, df):
     # By MAL_ID
     df['MAL_ID'] = df['MAL_ID'].astype("str")
     searched_ID = df[df['MAL_ID'] == string_entry]
-    # ONE PIECE HAS PROBLEMS :((((
     
     return searched_ci_name, searched_ci_eng, searched_ci_jp, searched_ID
 
@@ -119,6 +118,8 @@ cv = CountVectorizer()
 st.caption("WARNING: streamlit runs like a snail - please be patient💖")
 
 st.title('‧͙⁺˚*･༓☾ AniRec engine made with L0VE ✿✼:*ﾟ:༅｡')
+
+st.image("https://animesher.com/orig/1/133/1331/13313/animesher.com_gif-funny-himouto-umaruchan-1331344.gif", width=400)
 
 # Option RADIO BUTTONS x3 cuz buttons don't work -_-
 
