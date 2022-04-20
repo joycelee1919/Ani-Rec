@@ -1,0 +1,12 @@
+pandas
+numpy
+matplotlib
+seaborn
+sklearn
+rake_nltk
+string
+nltk
+PIL
+requests
+difflib
+streamlit
