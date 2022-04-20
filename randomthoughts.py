@@ -98,7 +98,7 @@ def display_image(sorted_df):
 
 #------------------------------
 
-pathtoCsv = r'https://docs.google.com/spreadsheets/d/1e2bBx9ImdlIav45zxGWxu-jTMH3SWUmpBYGOXYSY3bE/pub?gid=839328658&single=true&output=csv'
+pathtoCsv = r'https://docs.google.com/spreadsheets/d/1e2bBx9ImdlIav45zxGWxu-jTMH3SWUmpBYGOXYSY3bE/edit?usp=sharing&single=true&output=csv'
 anime_kw = pd.read_csv(pathtoCsv)
 #anime_kw = pd.read_csv("https://docs.google.com/spreadsheets/d/1e2bBx9ImdlIav45zxGWxu-jTMH3SWUmpBYGOXYSY3bE/edit?usp=sharing" + "/export?gid=0&format=csv", sep = "delimeter", header = 0, engine="python", encoding = "UTF-8", quoting=3)
 
