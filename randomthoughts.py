@@ -98,7 +98,7 @@ def display_image(sorted_df):
 
 #------------------------------
 
-anime_kw = pd.read_csv("https://drive.google.com/drive/u/1/folders/1HHxc65B-YhpGEC3bBV3ee959X2xyyiWW" +
+anime_kw = pd.read_csv("https://docs.google.com/spreadsheets/d/1e2bBx9ImdlIav45zxGWxu-jTMH3SWUmpBYGOXYSY3bE/edit?usp=sharing" +
                    "/export?gid=0&format=csv")
 
 anime_kw_syn100 = anime_kw[(anime_kw.Synopsis.str.len() > 100)] 
