@@ -24,10 +24,6 @@ import streamlit as st
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_colwidth', None)
 
-gb = GridOptionsBuilder.from_dataframe()
-gb.configure_grid_options(rowHeight=50)
-gridOptions = gb.build()
-
 #------------------------------
 
 st.title('‧͙⁺˚*･༓☾ AniRec Randomthoughts ✿✼:*ﾟ:༅｡')
@@ -144,6 +140,10 @@ if surprise_me:
 
     st.write("Our top 5 recommendations for you:\n")
     
-    AgGrid(sorted_df, height=500, fit_columns_on_grid_load=True)
+    #gb = GridOptionsBuilder.from_dataframe(sorted_df)
+    #gb.configure_grid_options(rowHeight=50)
+    #gridOptions = gb.build()
+    
+    AgGrid(sorted_df)
     
 #------------------------------
