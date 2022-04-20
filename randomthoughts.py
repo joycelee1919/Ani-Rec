@@ -137,4 +137,14 @@ st.write("Our top 5 recommendations for you:\n")
 
 st.plotly_chart(sorted_df)
 
+fig = go.Figure(data=[go.Table(
+    header=dict(values=list(sorted_df.columns),
+                fill_color='paleturquoise',
+                align='left'),
+    cells=dict(values=sorted_df.transpose().values.tolist(),
+               fill_color='lavender',
+               align='left'))])
+
+fig.show()
+
 #------------------------------
