@@ -18,7 +18,7 @@ from difflib import get_close_matches
 
 from sklearn.metrics.pairwise import cosine_similarity
 
-from st_aggrid import AgGrid
+from st_aggrid import AgGrid, DataReturnMode, GridUpdateMode, GridOptionsBuilder
 import streamlit as st
 
 pd.set_option('display.max_columns', None)
