@@ -196,8 +196,9 @@ elif status == "Based on an anime you love 🥰": # content-based
     st.header('Content-based recommendation')
     st.write("Don't worry if you don't know the exact title, suggestions will be given :3")
     st.caption("Try entering random stuff like: hOwl'Ss m0vingggu c4stleeeeee, 5114, attack on titan season 3, garden of words, もののけ姫 and see what happens?")
-    st.markdown("""Known bug: Anime with IDENTICAL 'Name', 'English_name', 'Japanese_name' cannot be searched directly :( 
-            - ONE PIECE (MAL_ID) seem to be the only anime with this issue.""")
+    st.caption("--------------") 
+    st.caption("Known bug: Anime with IDENTICAL 'Name', 'English_name', 'Japanese_name' cannot be searched directly by title or by MAL_ID :(")
+    st.caption("- ONE PIECE (MAL_ID = 21) seems to be the only anime with this issue.")         
 
     #------------------------------
 
