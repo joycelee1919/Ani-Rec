@@ -21,7 +21,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_colwidth', None)
 
-import plotly.graph_objects as go
+from st_aggrid import AgGrid
 import streamlit as st
 
 #------------------------------
@@ -140,27 +140,6 @@ if surprise_me:
 
     st.write("Our top 5 recommendations for you:\n")
     
-    fig = go.Figure(data=[go.Table(
-  columnorder = [1,2],
-  columnwidth = [80,400],
-  header = dict(
-    values = list(sorted_df.columns),
-    line_color='darkslategray',
-    fill_color='royalblue',
-    align=['left','center'],
-    font=dict(color='white', size=12),
-    height=40
-  ),
-  cells=dict(
-    values=sorted_df.transpose().values.tolist(),
-    line_color='darkslategray',
-    fill=dict(color=['paleturquoise', 'white']),
-    align=['left', 'center'],
-    font_size=12,
-    height=30)
-    )
-])
-
-    st.plotly_chart(fig)
-
+    AgGrid(sorted_df, height=500, fit_columns_on_grid_load=True)
+    
 #------------------------------
