@@ -148,6 +148,6 @@ if surprise_me:
                    fill_color='lavender',
                    align='left'))])
 
-    fig.show()
+    st.plotly_chart(fig)
 
 #------------------------------
