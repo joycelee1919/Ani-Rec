@@ -195,7 +195,7 @@ elif status == "Based on an anime you love 🥰": # content-based
         
     st.header('Content-based recommendation')
     st.write("Don't worry if you don't know the exact title, suggestions will be given :3")
-    st.caption("Try entering random stuff like: hOwl'Ss m0vingggu c4stleeeeee, 5114, attack on titan season 3, LapUTa, もののけ姫 and see what happens?")
+    st.caption("Try entering random stuff like: hOwl'Ss m0vingggu c4stleeeeee, 5114, attack on titan season 3, garden of words, もののけ姫 and see what happens?")
 
     #------------------------------
 
@@ -226,7 +226,7 @@ elif status == "Based on an anime you love 🥰": # content-based
                 st.write(set(combined_suggestions), sep = '\n')
 
         elif len(search_str_result) > 1:
-            st.write("\nMultiple results found :) Please select a unique MAL_ID from below for a more precise recommendation:\n")
+            st.write("\nMultiple results found :) Please enter a unique MAL_ID from below for a more precise recommendation:\n")
             st.table(search_str_result[['MAL_ID', 'Name', 'English_name', 'Japanese_name', 'Type', 'Episodes']].head(10))
 
         else:
