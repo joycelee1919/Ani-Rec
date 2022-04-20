@@ -189,6 +189,8 @@ if random_thoughts: # brainstorm plot elements
         st.write("Our top 5 recommendations for you:\n")
 
         st.table(sorted_df)
+        
+        random_thoughts = False
     
 #------------------------------
 
@@ -265,6 +267,8 @@ elif content_rec: # content-based
 
             st.write("\nSo here are our top 10 recommendations for you:")
             st.table(display_df)
+            
+            content_rec = False
 
 #------------------------------
 
