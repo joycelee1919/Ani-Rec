@@ -189,7 +189,7 @@ elif fate == "Based on an anime you love": # content-based
 
     #------------------------------
 
-    string_entry = input("\nEnter an anime title/MAL_ID to get recommended :D") 
+    string_entry = st.text_input("\nEnter an anime title/MAL_ID to get recommended :D") 
 
     #------------------------------
 
