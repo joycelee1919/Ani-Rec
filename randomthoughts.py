@@ -141,7 +141,7 @@ if surprise_me:
     st.write("Our top 5 recommendations for you:\n")
     
     gb = GridOptionsBuilder.from_dataframe(sorted_df)
-    gb.configure_grid_options(autoHeight = True, resizable = True, wrapText = True)
+    gb.configure_grid_options(height=500, fit_columns_on_grid_load=True)
     
     GridOptions = gb.build()
 
