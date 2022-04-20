@@ -7,5 +7,5 @@ rake_nltk
 nltk
 pillow
 requests
-difflib
+cdifflib
 streamlit
