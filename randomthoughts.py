@@ -96,53 +96,58 @@ cv = CountVectorizer()
 
 brainstorm = st.text_input("What's in your mind?")
 
-keywords_matrix = cv.fit_transform(anime_kw_syn100.Keywords) 
-brainstorm_matrix = cv.transform(np.array([brainstorm])) 
+#------------------------------
 
-cosine_sim = cosine_similarity(keywords_matrix, brainstorm_matrix)
+surprise_me = st.button("Enter")
 
-cosine_sim_flattened = np.ravel(cosine_sim)
+if surprise_me: 
+    keywords_matrix = cv.fit_transform(anime_kw_syn100.Keywords) 
+    brainstorm_matrix = cv.transform(np.array([brainstorm])) 
 
-top5_index = np.argpartition(-cosine_sim_flattened, 5)
-top5_index = top5_index[:5]
+    cosine_sim = cosine_similarity(keywords_matrix, brainstorm_matrix)
 
-top5_simscore = np.partition(-cosine_sim_flattened, 5)
-top5_simscore = -top5_simscore[:5]
+    cosine_sim_flattened = np.ravel(cosine_sim)
 
-brainstorm_df = anime_kw_syn100[['MAL_ID', 'Name', 'English_name', 'Japanese_name',
-                        'Genres', 'Synopsis', 'Type', 'Episodes', 
-                        'Rating', 'Polarity', 'Keywords']].copy()
+    top5_index = np.argpartition(-cosine_sim_flattened, 5)
+    top5_index = top5_index[:5]
+
+    top5_simscore = np.partition(-cosine_sim_flattened, 5)
+    top5_simscore = -top5_simscore[:5]
+
+    brainstorm_df = anime_kw_syn100[['MAL_ID', 'Name', 'English_name', 'Japanese_name',
+                            'Genres', 'Synopsis', 'Type', 'Episodes', 
+                            'Rating', 'Polarity', 'Keywords']].copy()
 
 
-brainstorm_df['Similarity_score'] = pd.Series(cosine_sim_flattened)
-brainstorm_df['Similarity_score'] = brainstorm_df['Similarity_score'].apply(lambda x:round(x,3)) 
+    brainstorm_df['Similarity_score'] = pd.Series(cosine_sim_flattened)
+    brainstorm_df['Similarity_score'] = brainstorm_df['Similarity_score'].apply(lambda x:round(x,3)) 
 
-top1, top2, top3, top4, top5 = top5_index
+    top1, top2, top3, top4, top5 = top5_index
 
-brainstorm_df_output = pd.concat([brainstorm_df.iloc[[top1]], brainstorm_df.iloc[[top2]], 
-                    brainstorm_df.iloc[[top3]], brainstorm_df.iloc[[top4]], 
-                    brainstorm_df.iloc[[top5]]], ignore_index=True)
+    brainstorm_df_output = pd.concat([brainstorm_df.iloc[[top1]], brainstorm_df.iloc[[top2]], 
+                        brainstorm_df.iloc[[top3]], brainstorm_df.iloc[[top4]], 
+                        brainstorm_df.iloc[[top5]]], ignore_index=True)
 
-display_df = brainstorm_df_output.drop('Keywords', axis = 1)
+    display_df = brainstorm_df_output.drop('Keywords', axis = 1)
 
-elements = [word for word, word_count in Counter(" ".join(brainstorm_df_output["Keywords"]).split()).most_common(30) if word not in stpwrd ]
-st.write("\nYou entered: " + brainstorm)
-st.write("\nWe think you'd like anime with these elements: " + str(elements))
+    elements = [word for word, word_count in Counter(" ".join(brainstorm_df_output["Keywords"]).split()).most_common(30) if word not in stpwrd ]
+    st.write("\nYou entered: " + brainstorm)
+    st.write("\nWe think you'd like anime with these elements: " + str(elements))
 
-sorted_df = display_df.sort_values('Similarity_score', ascending = False)
+    sorted_df = display_df.sort_values('Similarity_score', ascending = False)
 
-display_image(sorted_df)
+    display_image(sorted_df)
 
-st.write("Our top 5 recommendations for you:\n")
+    st.write("Our top 5 recommendations for you:\n")
 
-fig = go.Figure(data=[go.Table(
-    header=dict(values=list(sorted_df.columns),
-                fill_color='paleturquoise',
-                align='left'),
-    cells=dict(values=sorted_df.transpose().values.tolist(),
-               fill_color='lavender',
-               align='left'))])
+    fig = go.Figure(data=[go.Table(
+        header=dict(values=list(sorted_df.columns),
+                    fill_color='paleturquoise',
+                    align='left'),
+        cells=dict(values=sorted_df.transpose().values.tolist(),
+                   fill_color='lavender',
+                   align='left'))])
 
-fig.show()
+    fig.show()
 
 #------------------------------
