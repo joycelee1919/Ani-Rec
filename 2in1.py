@@ -122,11 +122,11 @@ st.title('‧͙⁺˚*･༓☾ AniRec engine made with L0VE ✿✼:*ﾟ:༅｡')
 
 st.write("How would you like to get recommended today?")
 
-# Option buttons x3
+# Option CHECKBOX x3 cuz buttons don't work -_-
 
-random_thoughts = st.button("✨Let Your Mind Roam Free✨")
-content_rec = st.button("Based on an anime you love 🥰")
-collaborative_rec = st.button("What do other people think? 💭")
+random_thoughts = st.checkbox("✨Let Your Mind Roam Free✨")
+content_rec = st.checkbox("Based on an anime you love 🥰")
+collaborative_rec = st.checkbox("What do other people think? 💭")
 
 
 #------------------------------
