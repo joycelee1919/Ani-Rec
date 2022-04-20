@@ -139,14 +139,27 @@ if surprise_me:
     display_image(sorted_df)
 
     st.write("Our top 5 recommendations for you:\n")
-
+    
     fig = go.Figure(data=[go.Table(
-        header=dict(values=list(sorted_df.columns),
-                    fill_color='paleturquoise',
-                    align='left'),
-        cells=dict(values=sorted_df.transpose().values.tolist(),
-                   fill_color='lavender',
-                   align='left'))])
+  columnorder = [1,2],
+  columnwidth = [80,400],
+  header = dict(
+    values = list(sorted_df.columns),
+    line_color='darkslategray',
+    fill_color='royalblue',
+    align=['left','center'],
+    font=dict(color='white', size=12),
+    height=40
+  ),
+  cells=dict(
+    values=sorted_df.transpose().values.tolist(),
+    line_color='darkslategray',
+    fill=dict(color=['paleturquoise', 'white']),
+    align=['left', 'center'],
+    font_size=12,
+    height=30)
+    )
+])
 
     st.plotly_chart(fig)
 
