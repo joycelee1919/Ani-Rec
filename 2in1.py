@@ -128,6 +128,9 @@ random_thoughts = st.button("✨Let Your Mind Roam Free✨")
 content_rec = st.button("Based on an anime you love 🥰")
 collaborative_rec = st.button("What do other people think? 💭")
 
+
+#------------------------------
+
 if random_thoughts: # brainstorm plot elements
     
     st.header('Random thoughts')
