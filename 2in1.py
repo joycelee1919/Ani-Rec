@@ -199,9 +199,9 @@ elif content_rec: # content-based
 
     #------------------------------
 
-    content_based = st.button("Enter")
+    content_rec_start = st.button("Enter")
 
-    if content_based: 
+    if content_rec_start: 
 
         searched_ci_name, searched_ci_eng, searched_ci_jp, searched_ID = search_casein(string_entry, anime_kw)
 
