@@ -107,18 +107,12 @@ cv = CountVectorizer()
 #------------------------------
 
 brainstorm = st.text_input("What are you thinking right now?")
-# adventure girl high school magic world friend 
-# See if: the longer the merrier?
 
 keywords_matrix = cv.fit_transform(anime_kw_syn100.Keywords) 
 brainstorm_matrix = cv.transform(np.array([brainstorm])) 
 
-cosine_sim = cosine_similarity(keywords_matrix, brainstorm_matrix)
-
-# Use the numpy.ravel() Function to Convert a Matrix to an Array in NumPy.
+cosine_sim = cosine_similarity(keywords_matrix, brainstorm_matrix
 cosine_sim_flattened = np.ravel(cosine_sim)
-
-# Top 5 anime with highest cosine similarity score between brainstorm vs keyword
 
 top5_index = np.argpartition(-cosine_sim_flattened, 5)
 top5_index = top5_index[:5]
@@ -126,32 +120,21 @@ top5_index = top5_index[:5]
 top5_simscore = np.partition(-cosine_sim_flattened, 5)
 top5_simscore = -top5_simscore[:5]
 
-# Create new df for brainstorm, contains all cosine similarity comparisons
-
 brainstorm_df = anime_kw_syn100[['MAL_ID', 'Name', 'English_name', 'Japanese_name',
                         'Genres', 'Synopsis', 'Type', 'Episodes', 
                         'Rating', 'Polarity', 'Keywords']].copy()
 
-# New column for similarity score for all anime
 
 brainstorm_df['Similarity_score'] = pd.Series(cosine_sim_flattened)
-brainstorm_df['Similarity_score'] = brainstorm_df['Similarity_score'].apply(lambda x:round(x,3)) # 3 dp not so precise in display
-
-# destructuring for later processing (bad practice but )
+brainstorm_df['Similarity_score'] = brainstorm_df['Similarity_score'].apply(lambda x:round(x,3)) 
 
 top1, top2, top3, top4, top5 = top5_index
-
-# Double [[]] in iloc for output as dataframe
-# Select only top 5 anime for display
 
 brainstorm_df_output = pd.concat([brainstorm_df.iloc[[top1]], brainstorm_df.iloc[[top2]], 
                     brainstorm_df.iloc[[top3]], brainstorm_df.iloc[[top4]], 
                     brainstorm_df.iloc[[top5]]], ignore_index=True)
 
-# Final output - discard Keyword
 display_df = brainstorm_df_output.drop('Keywords', axis = 1)
-
-# Display common elements and results
 
 elements = [word for word, word_count in Counter(" ".join(brainstorm_df_output["Keywords"]).split()).most_common(30) if word not in stpwrd ]
 print("\nYou entered: " + brainstorm)
