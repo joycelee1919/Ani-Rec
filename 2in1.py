@@ -194,6 +194,8 @@ if status == "✨Let Your Mind Roam Free✨": # brainstorm plot elements
 elif status == "Based on an anime you love 🥰": # content-based
         
     st.header('Content-based recommendation')
+    st.write("Don't worry if you don't know the exact title, suggestions will be given :3")
+    st.captions("Try entering random stuff like: hOwl'S m0ving c4stle, LapUTa, もののけひめ and see what happens?")
 
     #------------------------------
 
