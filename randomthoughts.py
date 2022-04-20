@@ -69,19 +69,19 @@ def display_image(sorted_df):
     first_genre = sorted_df['Genres'].iloc[0].split(',')
 
     if any(word in first_genre for word in ['Action', 'Shounen', 'Mecha']):
-        st.image(shounen) 
+        st.image(shounen, width=300) 
     elif any(word in first_genre for word in ['Slice of Life', 'Comedy', 'School', 'Seinen']):
-        st.image(family) 
+        st.image(family, width=300) 
     elif any(word in first_genre for word in ['Adventure', 'Kids']):
-        st.image(ghibli) 
+        st.image(ghibli, width=300) 
     elif any(word in first_genre for word in ['Romance', 'Drama', 'Shoujo']):
-        st.image(school) 
+        st.image(school, width=300) 
     elif any(word in first_genre for word in ['Sci-Fi', 'Thriller', 'Mystery', 'Space', 'Police']):
-        st.image(scifi) 
+        st.image(scifi, width=300) 
     elif any(word in first_genre for word in ['Magic', 'Fantasy', 'Supernatural', 'Super Power']):
-        st.image(fantasy) 
+        st.image(fantasy, width=300) 
     else:
-        st.image(allanime) 
+        st.image(allanime, width=300) 
 
 #------------------------------
 
