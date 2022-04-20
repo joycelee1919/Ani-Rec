@@ -142,9 +142,10 @@ if random_thoughts: # brainstorm plot elements
 
     #------------------------------
 
-    surprise_me = st.button("Enter")
+    start_random_thoughts = st.button("Enter")
 
-    if surprise_me: 
+    if start_random_thoughts: 
+        
         keywords_matrix = cv.fit_transform(anime_kw_syn100.Keywords) 
         brainstorm_matrix = cv.transform(np.array([brainstorm])) 
 
@@ -202,72 +203,65 @@ elif content_rec: # content-based
 
     if content_based: 
 
-        searching = True # Start of search
+        searched_ci_name, searched_ci_eng, searched_ci_jp, searched_ID = search_casein(string_entry, anime_kw)
 
-        while searching:
+        search_str_result = pd.concat([searched_ci_name, searched_ci_eng, searched_ci_jp, searched_ID], ignore_index=True)
+        search_str_result = search_str_result.drop_duplicates(subset='MAL_ID', keep="first")
+        search_str_result = search_str_result.drop('Keywords', axis = 1)
 
-            searched_ci_name, searched_ci_eng, searched_ci_jp, searched_ID = search_casein(string_entry, anime_kw)
+        if len(search_str_result) == 0:
+            st.write("\nNo matches found :( Do you mean:\n")
 
-            #Format search result for display
-            search_str_result = pd.concat([searched_ci_name, searched_ci_eng, searched_ci_jp, searched_ID], ignore_index=True)
-            search_str_result = search_str_result.drop_duplicates(subset='MAL_ID', keep="first")
-            search_str_result = search_str_result.drop('Keywords', axis = 1)
+            fuzzy_name, fuzzy_eng, fuzzy_jap = fuzzy_search(string_entry, anime_kw)
+            combined_suggestions = fuzzy_name + fuzzy_eng + fuzzy_jap
 
-            if len(search_str_result) == 0:
-                st.write("\nNo matches found :( Do you mean:\n")
-
-                fuzzy_name, fuzzy_eng, fuzzy_jap = fuzzy_search(string_entry, anime_kw)
-                combined_suggestions = fuzzy_name + fuzzy_eng + fuzzy_jap
-
-                if len(set(combined_suggestions)) == 0:
-                    st.write("----Sorry - no suggestion available. Please try again!----")
-
-                else:
-                    st.write(set(combined_suggestions), sep = '\n')
-
-            elif len(search_str_result) > 1:
-                st.write("\nMultiple results found :) Please select a unique MAL_ID from below for a more precise recommendation:\n")
-                st.table(search_str_result[['MAL_ID', 'Name', 'English_name', 'Japanese_name', 'Type', 'Episodes']].head(10))
+            if len(set(combined_suggestions)) == 0:
+                st.write("----Sorry - no suggestion available. Please try again!----")
 
             else:
-                st.write("\nAnime selected:")
-                st.table(search_str_result)
+                st.write(set(combined_suggestions), sep = '\n')
 
-                # Obtain index of searched anime for later matching
-                # 'Name' is unique
-                indices = pd.Series(anime_kw.index, index = anime_kw['Name']) # Name is unique in og df
-                title = search_str_result['Name'].iloc[0] # Match with that in selected result
-                idx = indices[title]
+        elif len(search_str_result) > 1:
+            st.write("\nMultiple results found :) Please select a unique MAL_ID from below for a more precise recommendation:\n")
+            st.table(search_str_result[['MAL_ID', 'Name', 'English_name', 'Japanese_name', 'Type', 'Episodes']].head(10))
 
-                # Start recommending based on keyword similarity
-                keywords = cv.fit_transform(anime_kw['Keywords'])
-                cosine_sim_keywords = cosine_similarity(keywords, keywords)
+        else:
+            st.write("\nAnime selected:")
+            st.table(search_str_result)
 
-                # Create new df display (rec based on keyword similarity)
-                kw_rec_df = anime_kw[['MAL_ID', 'Name', 'English_name', 'Japanese_name',
-                                        'Genres', 'Type', 'Episodes', 'Synopsis', 
-                                        'Rating', 'Polarity', 'Keywords']].copy()  # Keep 'Keywords' for identifying elements
+            # Obtain index of searched anime for later matching
+            # 'Name' is unique
+            indices = pd.Series(anime_kw.index, index = anime_kw['Name']) # Name is unique in og df
+            title = search_str_result['Name'].iloc[0] # Match with that in selected result
+            idx = indices[title]
 
-                # Similarity_column: contains cosine similarity scores of selected anime VS each of the other anime
-                kw_rec_df['Similarity_score'] = pd.Series(cosine_sim_keywords[idx])
-                kw_rec_df['Similarity_score'] = kw_rec_df['Similarity_score'].apply(lambda x: round(x, 3)) # 3 dp not so precise in display
-                kw_rec_df = kw_rec_df.sort_values(['Similarity_score', 'Rating'], ascending = False).iloc[1:11]            
+            # Start recommending based on keyword similarity
+            keywords = cv.fit_transform(anime_kw['Keywords'])
+            cosine_sim_keywords = cosine_similarity(keywords, keywords)
 
-                # Final output - discard Keyword
-                display_df = kw_rec_df.drop('Keywords', axis = 1)
+            # Create new df display (rec based on keyword similarity)
+            kw_rec_df = anime_kw[['MAL_ID', 'Name', 'English_name', 'Japanese_name',
+                                    'Genres', 'Type', 'Episodes', 'Synopsis', 
+                                    'Rating', 'Polarity', 'Keywords']].copy()  # Keep 'Keywords' for identifying elements
 
-                # Display common elements and results
+            # Similarity_column: contains cosine similarity scores of selected anime VS each of the other anime
+            kw_rec_df['Similarity_score'] = pd.Series(cosine_sim_keywords[idx])
+            kw_rec_df['Similarity_score'] = kw_rec_df['Similarity_score'].apply(lambda x: round(x, 3)) # 3 dp not so precise in display
+            kw_rec_df = kw_rec_df.sort_values(['Similarity_score', 'Rating'], ascending = False).iloc[1:11]            
 
-                elements = [word for word, word_count in Counter(" ".join(kw_rec_df["Keywords"]).split()).most_common(30) if word not in stpwrd ]
-                st.write("\nWe think you'd like anime with these elements: " + str(elements))
-                st.write("\nGenres that you like:", search_str_result['Genres'].iloc[0])
+            # Final output - discard Keyword
+            display_df = kw_rec_df.drop('Keywords', axis = 1)
 
-                display_image(search_str_result)
+            # Display common elements and results
 
-                st.write("\nSo here are our top 10 recommendations for you:")
-                st.table(display_df)
+            elements = [word for word, word_count in Counter(" ".join(kw_rec_df["Keywords"]).split()).most_common(30) if word not in stpwrd ]
+            st.write("\nWe think you'd like anime with these elements: " + str(elements))
+            st.write("\nGenres that you like:", search_str_result['Genres'].iloc[0])
 
-                searching = False # End of search
+            display_image(search_str_result)
+
+            st.write("\nSo here are our top 10 recommendations for you:")
+            st.table(display_df)
 
 #------------------------------
 
