@@ -139,6 +139,6 @@ if surprise_me:
 
     st.write("Our top 5 recommendations for you:\n")
 
-    st.write(sorted_df)
+    st.table(sorted_df)
     
 #------------------------------
