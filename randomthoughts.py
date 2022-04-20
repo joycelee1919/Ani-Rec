@@ -141,13 +141,10 @@ if surprise_me:
     st.write("Our top 5 recommendations for you:\n")
     
     gb = GridOptionsBuilder.from_dataframe(sorted_df)
-
-    gb.configure_pagination()
-    gb.configure_side_bar()
-    gb.configure_default_column(groupable=True, value=True, enableRowGroup=True, aggFunc="sum", editable=True)
+    gb.configure_grid_options(rowHeight=50)
     
-    gridOptions = gb.build()
+    GridOptions = gb.build()
 
-    AgGrid(sorted_df, gridOptions=gridOptions, enable_enterprise_modules=True)
+    AgGrid(sorted_df, gridOptions = GridOptions)
     
 #------------------------------
