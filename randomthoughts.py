@@ -134,6 +134,6 @@ display_image(sorted_df)
 
 st.write("Our top 5 recommendations for you:\n")
 
-st.dataframe(sorted_df, 1000, 2000)
+st.table(sorted_df)
 
 #------------------------------
