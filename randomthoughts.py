@@ -1,7 +1,3 @@
-pip install matplotlib
-
-import streamlit as st
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -22,6 +18,8 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.max_colwidth', None)
+
+import streamlit as st
 
 #------------------------------
 
