@@ -140,6 +140,9 @@ if surprise_me:
 
     st.write("Our top 5 recommendations for you:\n")
     
-    AgGrid(sorted_df, "resizable": True, "autoHeight": True, "wrapText": True)
+    gb = GridOptionsBuilder.from_dataframe(sorted_df)
+    gb.configure_default_column(editable=False, resizable=True,sorteable=True)
+    
+    AgGrid(sorted_df)
     
 #------------------------------
