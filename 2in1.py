@@ -120,10 +120,13 @@ st.caption("WARNING: streamlit runs like a snail - please be patient💖")
 
 st.title('‧͙⁺˚*･༓☾ AniRec engine made with L0VE ✿✼:*ﾟ:༅｡')
 
-# Create a page dropdown 
-fate = st.selectbox("How would you like to get recommended today?", ["Let Your Mind Roam Free", "Based on an anime you love", "What do other people think?"]) 
+# Option buttons x3
 
-if fate == "Let Your Mind Roam Free": # randomthoughts
+random_thoughts = st.button("Let Your Mind Roam Free")
+content_rec = st.button("Based on an anime you love")
+collaborative_rec = st.button("What do other people think?")
+
+if random_thoughts: # brainstorm plot elements
     
     st.header('Random thoughts')
 
@@ -183,7 +186,7 @@ if fate == "Let Your Mind Roam Free": # randomthoughts
     
 #------------------------------
 
-elif fate == "Based on an anime you love": # content-based
+elif content_rec: # content-based
         
     st.header('Content-based recommendation')
 
@@ -264,9 +267,11 @@ elif fate == "Based on an anime you love": # content-based
 
                 searching = False # End of search
 
-    elif fate == "What do other people think?": # collaborative user rating clustering
+    elif collaborative_rec: # collaborative user rating clustering
         
         st.balloons()
+        
+        st.header('Collaborative user rating clustering')
 
         st.write("TOO BAD. There's nothing in here D:")
 
