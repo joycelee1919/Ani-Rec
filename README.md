@@ -9,6 +9,7 @@ MADE WITH LOVE - Random brainstorm + content-based + collaborative
 ### Title page & agenda
 YOKU - Eve MV
 https://youtu.be/w6G7Yfp1pVE
+Main illustrator/animator: 米山舞 https://twitter.com/yoneyamai
 
 ### Slide 01
 雪解け by はーみん
