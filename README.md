@@ -2,7 +2,7 @@
 https://share.streamlit.io/joycelee1919/ani-rec/main/2in1.py
 
 # Ani-Rec
-MADE WITH LOVE - Random brainstorm + content-based + collaborative
+MADE WITH LOVE - Random brainstorm + content-based + collaborative anime recommendation
 
 ## Video presentation :) Click to watch!
 [![Video presentation](https://img.youtube.com/vi/6X0qrKMVhVk/maxresdefault.jpg)](https://youtu.be/6X0qrKMVhVk)
