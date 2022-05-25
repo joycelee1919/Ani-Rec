@@ -1,3 +1,6 @@
+### Come give it a go!
+https://share.streamlit.io/joycelee1919/ani-rec/main/2in1.py
+
 # Ani-Rec
 MADE WITH LOVE - Random brainstorm + content-based + collaborative
 
